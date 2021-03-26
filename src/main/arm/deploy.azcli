@@ -123,6 +123,10 @@ if [ $? != 0 ]; then
 	echo "Using existing resource group..."
 fi
 
+#parameters JSON
+parametersJson=$( cat $parametersFilePath | jq '.parameters' )
+parametersJson=$( echo "$parametersJson" | jq -c '.' )
+
 #Start deployment
 echo "Starting deployment..."
 (
