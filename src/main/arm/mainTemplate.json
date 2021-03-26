@@ -193,7 +193,7 @@
                     "imageReference": {
                         "publisher": "RedHat",
                         "offer": "RHEL",
-                        "sku": "7.4",
+                        "sku": "8.2",
                         "version": "latest"
                     },
                     "osDisk": {

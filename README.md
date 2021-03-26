@@ -28,3 +28,16 @@
    ```bash
    ./deploy.azcli -n <deploymentName> -i <subscriptionId> -g <resourceGroupName> -l <resourceGroupLocation>
    ```
+
+## Use cloud-init to run a bash script
+
+```bash
+az group create -n <your-alias>-resource-group -l eastus
+
+az vm create \
+  --resource-group <your-alias>-resource-group \
+  --name test-cloud-init \
+  --image RedHat:RHEL:8.2:latest \
+  --custom-data simple_bash.sh \
+  --generate-ssh-keys
+```
