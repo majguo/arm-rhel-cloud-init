@@ -29,15 +29,33 @@
    ./deploy.azcli -n <deploymentName> -i <subscriptionId> -g <resourceGroupName> -l <resourceGroupLocation>
    ```
 
-## Use cloud-init to run a bash script
+## Use cloud-init to run a user script or pass user data
 
-```bash
-az group create -n <your-alias>-resource-group -l eastus
+1. Run a user script
 
-az vm create \
-  --resource-group <your-alias>-resource-group \
-  --name test-cloud-init \
-  --image RedHat:RHEL:8.2:latest \
-  --custom-data simple_bash.sh \
-  --generate-ssh-keys
-```
+   ```bash
+   RESOURCE_GROUP=<your-alias>-resource-group
+   az group create -n $RESOURCE_GROUP -l eastus
+
+   az vm create \
+     --resource-group $RESOURCE_GROUP \
+     --name test-cloud-init \
+     --image RedHat:RHEL:8.2:latest \
+     --custom-data simple_bash.sh \
+     --generate-ssh-keys
+   ```
+
+1. Pass user data
+
+   ```bash
+   RESOURCE_GROUP=<your-alias>-resource-group
+   az group create -n $RESOURCE_GROUP -l eastus
+
+   USER_DATA=<specify-user-data>
+   az vm create \
+     --resource-group $RESOURCE_GROUP \
+     --name test-cloud-init \
+     --image RedHat:RHEL:8.2:latest \
+     --custom-data $USER_DATA \
+     --generate-ssh-keys
+   ```
