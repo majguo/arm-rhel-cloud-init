@@ -4,3 +4,5 @@ target
 .settings
 *.versionsBackup
 .classpath
+cloud.cfg
+ovf-env.xml
